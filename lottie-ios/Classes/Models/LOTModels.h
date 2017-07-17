@@ -20,6 +20,7 @@
 #import "LOTComposition.h"
 #import "LOTLayer.h"
 #import "LOTMask.h"
+#import "LOTShapeStar.h"
 #import "LOTShapeCircle.h"
 #import "LOTShapeFill.h"
 #import "LOTShapeGroup.h"

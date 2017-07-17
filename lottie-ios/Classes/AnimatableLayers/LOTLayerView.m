@@ -10,6 +10,7 @@
 #import "LOTShapeLayerView.h"
 #import "LOTRectShapeLayer.h"
 #import "LOTEllipseShapeLayer.h"
+#import "LOTStarShapeLayer.h"
 #import "LOTGroupLayerView.h"
 #import "CAAnimationGroup+LOTAnimatableGroup.h"
 #import "LOTMaskLayer.h"
@@ -218,6 +219,16 @@
                                                                                      trim:currentTrimPath
                                                                                 transform:currentTransform
                                                                              withLayerDuration:self.layerDuration];
+      [shapeLayers addObject:shapeLayer];
+      [_childContainerLayer addSublayer:shapeLayer];
+    } else if ([item isKindOfClass:[LOTShapeStar class]]) {
+      LOTShapeStar *shapeStar = (LOTShapeStar *)item;
+      LOTStarShapeLayer *shapeLayer = [[LOTStarShapeLayer alloc] initWithStarShape:shapeStar
+                                                                              fill:currentFill
+                                                                            stroke:currentStroke
+                                                                              trim:currentTrimPath
+                                                                         transform:currentTransform
+                                                                 withLayerDuration:self.layerDuration];
       [shapeLayers addObject:shapeLayer];
       [_childContainerLayer addSublayer:shapeLayer];
     } else if ([item isKindOfClass:[LOTShapeTransform class]]) {

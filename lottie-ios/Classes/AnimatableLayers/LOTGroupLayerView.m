@@ -10,6 +10,7 @@
 #import "LOTShapeLayerView.h"
 #import "LOTRectShapeLayer.h"
 #import "LOTEllipseShapeLayer.h"
+#import "LOTStarShapeLayer.h"
 
 #import "CAAnimationGroup+LOTAnimatableGroup.h"
 
@@ -96,14 +97,24 @@
                                                                              withLayerDuration:self.layerDuration];
       [shapeLayers addObject:shapeLayer];
       [self addSublayer:shapeLayer];
+    } else if ([item isKindOfClass:[LOTShapeStar class]]) {
+      LOTShapeStar *shapeStar = (LOTShapeStar *)item;
+      LOTStarShapeLayer *shapeLayer = [[LOTStarShapeLayer alloc] initWithStarShape:shapeStar
+                                                                              fill:currentFill
+                                                                            stroke:currentStroke
+                                                                              trim:currentTrim
+                                                                         transform:currentTransform
+                                                                 withLayerDuration:self.layerDuration];
+      [shapeLayers addObject:shapeLayer];
+      [self addSublayer:shapeLayer];
     } else if ([item isKindOfClass:[LOTShapeGroup class]]) {
       LOTShapeGroup *shapeGroup = (LOTShapeGroup *)item;
       LOTGroupLayerView *groupLayer = [[LOTGroupLayerView alloc] initWithShapeGroup:shapeGroup
-                                                                        transform:currentTransform
-                                                                             fill:currentFill
-                                                                           stroke:currentStroke
-                                                                         trimPath:currentTrim
-                                                                     withLayerDuration:self.layerDuration];
+                                                                          transform:currentTransform
+                                                                               fill:currentFill
+                                                                             stroke:currentStroke
+                                                                           trimPath:currentTrim
+                                                                  withLayerDuration:self.layerDuration];
       [groupLayers addObject:groupLayer];
       [self addSublayer:groupLayer];
     }
